@@ -24,7 +24,7 @@ public class UsersController {
         return "users";
     }
 
-    @GetMapping("/edituser/{id}")
+    @RequestMapping("/edituser/{id}")
     public ModelAndView editUser(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("edituser");
         User user = userService.findById(id);
