@@ -34,10 +34,10 @@ public class UserDAOimpl implements UserDAO{
 
     @Override
     public void edit(User user) {
-//        User userFromDB = findById(user.getId());
-//        userFromDB.setFirstName(user.getFirstName());
-//        userFromDB.setLastName(user.getLastName());
-        entityManager.merge(user);
+        User userFromDB = findById(user.getId());
+        userFromDB.setFirstName(user.getFirstName());
+        userFromDB.setLastName(user.getLastName());
+        entityManager.merge(userFromDB);
     }
 
     @Override

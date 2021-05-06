@@ -11,7 +11,7 @@
     <div align="center">
         <h1>Edit User</h1>
         <br/>
-        <form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
+        <form action="#" th:action="@{/user-update}" th:object="${user}"  th:method="POST">
             <table border="0" cellpadding="10">
                 <tr>
                     <td>Id</td>
@@ -22,13 +22,13 @@
                 <tr>
                     <td>FirstName</td>
                     <td>
-                        <input type="text" th:filed="*{firstName}" />
+                        <input type="text" th:field="*{firstName}" />
                     </td>
                 </tr>
                 <tr>
                     <td>LastName</td>
                     <td>
-                        <input type="text" th:filed="*{lastName}" />
+                        <input type="text" th:field="*{lastName}" />
                     </td>
                 </tr>
                 <tr>

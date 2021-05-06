@@ -25,12 +25,14 @@ public class UsersController {
     }
 
     @GetMapping("/edituser/{id}")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("user", userService.findById(id));
-        return "edituser";
+    public ModelAndView editUser(@PathVariable(name = "id") Long id) {
+        ModelAndView modelAndView = new ModelAndView("edituser");
+        User user = userService.findById(id);
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/user-update", method = RequestMethod.POST)
+    @PostMapping( "/user-update")
     public String update(@ModelAttribute("user") User user) {
          userService.edit(user);
          return "redirect:/users";
