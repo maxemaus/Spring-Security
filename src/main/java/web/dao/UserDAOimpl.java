@@ -16,6 +16,13 @@ public class UserDAOimpl implements UserDAO{
     private EntityManager entityManager;
 
     @Override
+    public User getUserByName(String name) {
+        Query query = entityManager.createQuery("select u from User u where u.username=:name");
+        query.setParameter("name", name);
+        return (User) query.getSingleResult();
+    }
+
+    @Override
     public List<User> getUsersList() {
         return entityManager.createQuery("select u from User u").getResultList();
     }
@@ -34,10 +41,7 @@ public class UserDAOimpl implements UserDAO{
 
     @Override
     public void edit(User user) {
-        User userFromDB = findById(user.getId());
-        userFromDB.setFirstName(user.getFirstName());
-        userFromDB.setLastName(user.getLastName());
-        entityManager.merge(userFromDB);
+        entityManager.merge(user);
     }
 
     @Override

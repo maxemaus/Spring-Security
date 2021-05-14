@@ -7,22 +7,27 @@
     <style>table th, table td {padding: 5px;}</style>
 </head>
 <body>
-<table border="1">
+<table>
+    <thead>
     <tr>
-        <th>id</th>
-        <th>firstName</th>
-        <th>lastName</th>
+        <th> id </th>
+        <th> name </th>
+        <th> password </th>
     </tr>
-
+    </thead>
+    <tbody>
+    <tr th:if="${users.isEmpty()}">
+        <td colspan="5"> No Users Available </td>
+    </tr>
     <tr th:each="user : ${users}">
-        <td th:utext="${user.getId()}">id</td>
-        <td th:utext="${user.getFirstName()}">FirstName</td>
-        <td th:utext="${user.getLastName()}">LastName</td>
-        <td><a th:href="@{/edituser/{id}(id=${user.id})}">Edit</a> </td>
-        <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a> </td>
+        <td th:utext="${user.id}"> id </td>
+        <td th:utext="${user.username}"> series </td>
+        <td><a th:href="@{admin/{id}/edit(id=${user.id})}">Edit</a> </td>
+        <td><a th:href="@{admin/{id}/delete(id=${user.id})}">Delete</a> </td>
     </tr>
+    </tbody>
 </table>
-<p><a href=/adduser>Create User</a></p>
-
+<p><a href="@{admin/new}">add User</a></p>
+<div th:replace="logout :: logout"></div>
 </body>
 </html>
