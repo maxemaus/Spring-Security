@@ -7,27 +7,33 @@
     <style>table th, table td {padding: 5px;}</style>
 </head>
 <body>
-<table>
-    <thead>
+<table border="1">
+    <thead align="center">
     <tr>
-        <th> id </th>
-        <th> name </th>
-        <th> password </th>
+        <th> ID </th>
+        <th> UserName </th>
+        <th> PassWord </th>
+        <th> Roles </th>
+
     </tr>
     </thead>
-    <tbody>
+
     <tr th:if="${users.isEmpty()}">
         <td colspan="5"> No Users Available </td>
     </tr>
     <tr th:each="user : ${users}">
         <td th:utext="${user.id}"> id </td>
-        <td th:utext="${user.username}"> series </td>
-        <td><a th:href="@{admin/{id}/edit(id=${user.id})}">Edit</a> </td>
-        <td><a th:href="@{admin/{id}/delete(id=${user.id})}">Delete</a> </td>
+        <td th:utext="${user.username}"> UserName </td>
+        <td th:utext="${user.password}"> PassWord </td>
+        <td width="50%" th:utext="${user.getRoles()}"> Roles </td>
+        <td><a th:href="@{admin/{id}/edit(id=${user.id})}"><button th:text="Edit"></button> </a> </td>
+        <td><a th:href="@{admin/{id}/delete(id=${user.id})}"><button th:text="Delete"></button> </a> </td>
     </tr>
-    </tbody>
 </table>
-<p><a href="@{admin/new}">add User</a></p>
-<div th:replace="logout :: logout"></div>
+<br>
+<a th:href="@{admin/new}">Add User</a>
+<br>
+<br>
+<a href="/logout"><button th:text="Logout"></button></a>
 </body>
 </html>

@@ -6,22 +6,23 @@
   <title></title>
 </head>
 <body>
-<table>
+<table border="1">
   <thead>
   <tr>
-    <th> id </th>
-    <th> name </th>
-    <th> password </th>
+    <th> ID </th>
+    <th> Name </th>
+    <th> PassWord </th>
   </tr>
   </thead>
   <tbody>
   <tr>
-    <td><span th:text="${user.id}"> model </span></td>
-    <td><span th:text="${user.username}"> series </span></td>
+    <td><span th:text="${user.id}"> id </span></td>
+    <td><span th:text="${user.username}"> name</span></td>
+    <td><span th:text="${user.password}"> password </span></td>
   </tr>
   </tbody>
 
 </table>
-<div th:replace="logout :: logout"></div>
+<p><a href="/logout"><button th:text="Logout"></button></a> </p>
 </body>
 </html>
